@@ -24,7 +24,7 @@ public class Reservation {
     private LocalDate dateFin;
 
     @NotNull
-    @ColumnDefault("EN_ATTENTE")
+
     @Column(nullable = false, name = "statut")
     private StatutReservation statut = StatutReservation.EN_ATTENTE;
 

@@ -18,7 +18,6 @@ public class BorneRecharge {
     private Long id;
 
     @NotNull
-    @ColumnDefault("DISPONIBLE")
     @Column(nullable = false, name = "etat")
     private EtatBorne etat = EtatBorne.DISPONIBLE;
 

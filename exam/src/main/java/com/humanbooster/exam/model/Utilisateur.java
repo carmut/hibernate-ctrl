@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.ColumnDefault;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -37,7 +36,7 @@ public class Utilisateur implements AuthentificationService {
     @Column(name = "valide")
     private boolean valide = false;
 
-    @ColumnDefault("UTILISATEUR")
+
     @Column(name = "role")
     private RoleUtilisateur role = RoleUtilisateur.UTILISATEUR;
 
@@ -112,6 +111,10 @@ public class Utilisateur implements AuthentificationService {
     public void validation(int code){
         if(code == this.codeValidation){
             this.valide = true;
+            System.out.println("validation effectuer avec succee");
+        } else {
+            System.out.println("code invalide");
+            System.out.println("votre code est : " + codeValidation);
         }
     }
 
@@ -147,4 +150,18 @@ public class Utilisateur implements AuthentificationService {
         }
     }
 
+
+    //fonctions de test
+    public int enregistrer_test(String email, String motDePasse){
+        this.email = email;
+        this.motDePasse = motDePasse;
+
+        generateCodeValidation();
+
+        System.out.println("====== email simulé ======");
+        System.out.println("votre de code de validation est le : ");
+        System.out.println(getCodeValidation());
+
+        return codeValidation;
+    }
 }
