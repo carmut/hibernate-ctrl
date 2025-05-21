@@ -8,6 +8,7 @@ import org.hibernate.annotations.ColumnDefault;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 @Entity
 @Table(name = "utilisateur")
@@ -16,7 +17,7 @@ public class Utilisateur {
     //attributs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Email
     @NotNull
@@ -52,7 +53,7 @@ public class Utilisateur {
 
 
     //getter and setter
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -100,4 +101,48 @@ public class Utilisateur {
     public void addReservation(Reservation reservation) {
         this.reservations.add(reservation);
     }
+
+    //fonction
+    public void generateCodeValidation() {
+        this.codeValidation = (int) (Math.random() * 9000 + 1000);
+    }
+
+    public void validation(int code){
+        if(code == this.codeValidation){
+            this.valide = true;
+        }
+    }
+
+    public void enregistrer(){
+        Scanner inputregister = new Scanner(System.in);
+
+        System.out.println("vueillez renseigner votre email : ");
+        String mail = inputregister.next();
+        inputregister.nextLine();
+        this.email = mail;
+
+        System.out.println("vueillez renseigner votre mot de passe : ");
+        String password = inputregister.next();
+        inputregister.nextLine();
+        this.motDePasse = password;
+
+        generateCodeValidation();
+
+        System.out.println("====== email simulé ======");
+        System.out.println("votre de code de validation est le : ");
+        System.out.println(getCodeValidation());
+    }
+
+    public void connection(String email, String motDePasse){
+        if(this.valide){
+            if (this.email.equals(email) && this.motDePasse.equals(motDePasse)){
+                System.out.println("connection réussi");
+            }else {
+                System.out.println("identifiant invalide");
+            }
+        }else {
+            System.out.println("compte non valider");
+        }
+    }
+
 }

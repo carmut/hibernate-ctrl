@@ -15,7 +15,7 @@ public class BorneRecharge {
     //attributs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotNull
     @ColumnDefault("DISPONIBLE")
@@ -46,7 +46,7 @@ public class BorneRecharge {
 
 
     //getter and setter
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

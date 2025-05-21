@@ -13,7 +13,7 @@ public class Reservation {
     //attributs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotNull
     @Column(nullable = false, name = "dateDebut")
@@ -51,7 +51,7 @@ public class Reservation {
 
 
     //getter and setter
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

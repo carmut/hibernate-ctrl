@@ -13,7 +13,7 @@ public class LieuRecharge {
     //attributs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotNull
     @Column(nullable = false, name = "nom")
@@ -37,7 +37,7 @@ public class LieuRecharge {
 
 
     //getter and setter
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
