@@ -8,6 +8,7 @@ import com.humanbooster.exam.model.BorneRecharge;
 import com.humanbooster.exam.model.LieuRecharge;
 import com.humanbooster.exam.model.Reservation;
 import com.humanbooster.exam.model.Utilisateur;
+import com.humanbooster.exam.model.enums.EtatBorne;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -77,13 +78,11 @@ public class App {
         user.addReservation(reservation);
 
     //test pour LieuRecharge
+        lieu.addBorne(borne);
     //test pour BorneRecharge
+        borne.addReservation(reservation);
     //test pour Reservation
-
-
-
-
-
+        
 
 
 
@@ -120,17 +119,45 @@ public class App {
             System.out.println(test_user_db);
 
     //test pour LieuRecharge
-        //resultat attendue :entitée Utilisateur creer avec succes
             lieuDao.creer(lieu);
             Long lieu_id = lieu.getId();
             LieuRecharge test_lieu_db = lieuDao.lire(lieu_id);
-
+            System.out.println(test_lieu_db.getNom() + " " + test_lieu_db.getAdresse());
+            test_lieu_db.setNom("test_changement");
+            lieuDao.mettreAJour(test_lieu_db);
+            test_lieu_db = lieuDao.lire(lieu_id);
+            System.out.println(test_lieu_db.getNom());
+            lieuDao.supprimer(lieu_id);
+            test_lieu_db = lieuDao.lire(lieu_id);
+            System.out.println(test_lieu_db);
 
     //test pour BorneRecharge
+            borneDao.creer(borne);
+            Long borne_id = borne.getId();
+            BorneRecharge test_borne_db = borneDao.lire(borne_id);
 
+            System.out.println(test_borne_db.getEtat() + " " + test_borne_db.getTarifHoraire());
+            test_borne_db.setEtat(EtatBorne.RESERVEE);
+            borneDao.mettreAJour(test_borne_db);
+            test_borne_db = borneDao.lire(borne_id);
+            System.out.println(test_borne_db.getEtat());
+            borneDao.supprimer(borne_id);
+            test_borne_db = borneDao.lire(borne_id);
+            System.out.println(test_borne_db);
 
     //test pour Reservation
-
+            reservationDao.creer(reservation);
+            Long reservation_id = reservation.getId();
+            Reservation test_reservation_db = reservationDao.lire(reservation_id);
+            System.out.println(test_reservation_db.getDateDebut() + " " + test_reservation_db.getDateFin());
+            cal.set(2025, Calendar.APRIL, 27, 9, 0, 0);
+            test_reservation_db.setDateFin(cal.getTime());
+            reservationDao.mettreAJour(test_reservation_db);
+            test_reservation_db = reservationDao.lire(reservation_id);
+            System.out.println(test_reservation_db.getDateFin());
+            reservationDao.supprimer(reservation_id);
+            test_reservation_db = reservationDao.lire(reservation_id);
+            System.out.println(test_reservation_db);
     }
 }
 
