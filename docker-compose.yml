@@ -14,7 +14,8 @@ services:
       - mysql_data:/var/lib/mysql
   
   app:
-    build: ./hibernate-projet
+    build: ./exam
+
     container_name: app
     depends_on:
       - mysql

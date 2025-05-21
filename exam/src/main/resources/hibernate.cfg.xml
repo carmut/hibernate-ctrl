@@ -14,11 +14,11 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
 
-        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.show_sql">false</property>
         <property name="hibernate.format_sql">true</property>
         <mapping class="com.humanbooster.exam.model.Utilisateur"/>
-        <mapping class="com.humanbooster.exam.model.BorneRecharge"/>
         <mapping class="com.humanbooster.exam.model.LieuRecharge"/>
+        <mapping class="com.humanbooster.exam.model.BorneRecharge"/>
         <mapping class="com.humanbooster.exam.model.Reservation"/>
 
     </session-factory>

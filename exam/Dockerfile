@@ -10,4 +10,5 @@ RUN mvn package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/exam-1.0-SNAPSHOT.jar app.jar
+# ENTRYPOINT [ "tail", "-f", "/dev/null" ]
 ENTRYPOINT [ "java", "-jar", "app.jar" ]
