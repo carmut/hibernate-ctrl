@@ -101,6 +101,11 @@ public class Utilisateur implements AuthentificationService {
     }
     public void addReservation(Reservation reservation) {
         this.reservations.add(reservation);
+
+        //ajouter pour les tests
+        for(Reservation r : reservations ) {
+            System.out.println(r.getDateDebut() + " <--> " + r.getDateFin());
+        }
     }
 
     //fonction
