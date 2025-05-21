@@ -12,7 +12,7 @@ docker-compose.override.yml
 Thumbs.db
 
 # IDE files
-.idea/
+exam/.idea/
 .vscode/
 *.sublime-workspace
 *.sublime-project
