@@ -26,6 +26,8 @@ public abstract class ImplementationDao<T, ID> implements GenericDao<T, ID> {
             session.beginTransaction();
             session.persist(entity);
             session.getTransaction().commit();
+            //partie ajouter pour les tests
+            System.out.println("entitée " + entityClass.getSimpleName() + " creer avec succes");
         }
     }
 
