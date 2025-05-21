@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Reservation {
@@ -17,11 +18,11 @@ public class Reservation {
 
     @NotNull
     @Column(nullable = false, name = "dateDebut")
-    private LocalDate dateDebut;
+    private Date dateDebut;
 
     @NotNull
     @Column(nullable = false, name = "dateFin")
-    private LocalDate dateFin;
+    private Date dateFin;
 
     @NotNull
 
@@ -41,7 +42,7 @@ public class Reservation {
     private BorneRecharge borne;
 
     //contructor
-    public Reservation(LocalDate dateDebut, LocalDate dateFin, Utilisateur utilisateur, BorneRecharge borne) {
+    public Reservation(Date dateDebut, Date dateFin, Utilisateur utilisateur, BorneRecharge borne) {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.utilisateur = utilisateur;
@@ -55,17 +56,17 @@ public class Reservation {
         return id;
     }
 
-    public LocalDate getDateDebut() {
+    public Date getDateDebut() {
         return dateDebut;
     }
-    public void setDateDebut(LocalDate dateDebut) {
+    public void setDateDebut(Date dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public LocalDate getDateFin() {
+    public Date getDateFin() {
         return dateFin;
     }
-    public void setDateFin(LocalDate dateFin) {
+    public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
     }
 
