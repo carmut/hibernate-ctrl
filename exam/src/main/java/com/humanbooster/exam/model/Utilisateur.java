@@ -1,18 +1,20 @@
 package com.humanbooster.exam.model;
 
+import com.humanbooster.exam.dao.interfaces.AuthentificationService;
 import com.humanbooster.exam.model.enums.RoleUtilisateur;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.ColumnDefault;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 @Entity
 @Table(name = "utilisateur")
-public class Utilisateur {
+public class Utilisateur implements AuthentificationService {
 
     //attributs
     @Id
